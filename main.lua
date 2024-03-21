@@ -1,3 +1,12 @@
+-- ![Imports!]
+push = require 'push'
+
+-- ![Variables]
+WINDOW_WIDTH = 1280
+WINDOW_HEIGHT = 720
+
+VIRTUAL_WIDTH = 432
+VIRTUAL_HEIGHT = 243
 
 -- Draw the Screen
 -- > {drawScreen= /GUI_ENV_SCREEN.love}
