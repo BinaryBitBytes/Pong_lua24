@@ -1,5 +1,8 @@
 -- ![Imports!]
 push = require 'push'
+gui = require 'gui'
+init = require 'init'
+virtual_init = require 'virtual_init'
 
 -- ![Variables]
 WINDOW_WIDTH = 1280
