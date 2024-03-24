@@ -1,3 +1,4 @@
+-- [--!Initialization with `love.load(arg (table))`]
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
 

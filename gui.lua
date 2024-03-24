@@ -1,3 +1,4 @@
+-- [--!Call Each Frane After Updating Drawing]
 function love.draw()
     love.graphics.printf(
         'Hello, Welcome to Pong!',
