@@ -1,8 +1,8 @@
 -- ![Imports!]
-push = require 'push'
-gui = require 'gui'
-init = require 'init'
-virtual_init = require 'virtual_init'
+Init = require 'Pong_lua24.Framework.init'
+Gui = require 'Pong_lua24.Framework.gui'
+Virtual_init = require 'Pong_lua24.Framework.virtual_init'
+Push = require 'push'
 --  Draw the Screen
 -- > {drawScreen= /GUI_ENV_SCREEN.love}
 -- 2D Screen
@@ -12,34 +12,29 @@ WINDOW_HEIGHT = 720 -- Draws the window height
 
 VIRTUAL_WIDTH = 432 --[[Draws the virtual width to scale]]
 VIRTUAL_HEIGHT = 243 --[[Draws the virtual height to scale]]
-
--- -->[Players]
-
--- -->[Paddle]
-
--- -->[Ball]
-
+--TODO-->[Players]
+--TODO-->[Paddle]
+--TODO-->[Ball]
 -- -- -->[Actions]
-
--- -->[Bounds]
-
--- -->[Walls]
-
+--TODO-->[Bounds]
+--TODO-->[Walls]
 -- -- -- -- Coordinates
-
--- -- Collision Detection
-
+--TODO -- Collision Detection
 -- -- -- Physics
-
 -- -- -- -- Time Constants
-
 -- -- -- -- Distance / Time 
+--TODO-- -- -- Events
+--TODO-- -- -- State
+--TODO-- -- -- Sound Effects
+--TODO-- -- -- Scoring
+--!----------------------------------------------------------------
 
--- -- -- -- Events
+--TODO: [Load @Init]
+Init()
 
--- -- -- -- State
+--TODO: [Draw @Gui]
+Gui()
 
--- -- -- -- Sound Effects
-
--- -- -- -- Scoring
-
+--TODO: [Draw @Virtual_init]
+Virtual_init()
+--! TODO: [Update @ ]
