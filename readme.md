@@ -10,14 +10,22 @@ By: BinaryBitBytes
 > [Env & Global Variables](https://www.lua.org/manual/5.4/manual.html#:~:text=2.2%20–%20Environments%20and%20the%20Global%20Environment)
 > [Types](https://www.lua.org/manual/5.4/manual.html#:~:text=2.1%20%E2%80%93%20Values%20and%20Types)
 >> ```There are eight basic types in Lua:```
->>>1. nil
->>>2. boolean
->>>3. number
->>>4. string
->>>5. function
->>>6. userdata
->>>7. thread
->>>8. table
+<div style="column-count: 2; -moz-column-count: 2; -webkit-column-count: 2; background-color: #55BEEFFF; padding:1rem; border-radius: 5px; text-align: center;">
+    <ol start="1">
+        <li style="color: red; text-decoration: underline;">nil</li>
+        <li style="color: green; text-decoration: underline;">boolean</li>
+        <li style="color: yellow; text-decoration: underline;">number</li>
+        <li style="color: purple; text-decoration: underline;">string</li>
+    </ol>
+    <ol start="5">
+        <li style="color: orange; text-decoration: underline;">function</li>
+        <li style="color: blue; text-decoration: underline;">userdata</li>
+        <li style="color: pink; text-decoration: underline;">thread</li>
+        <li style="color: brown; text-decoration: underline;">table</li>
+    </ol>
+</div>
+
+
 </Section>
 <Section>
 
