@@ -66,10 +66,9 @@ By: BinaryBitBytes
 = Callback function used to draw on the screen every frame.
 >>>> `love.draw( )`
 >>>>> ***No Arguments***
->>>4. [love.graphics](https://love2d.org/wiki/love.graphics)
-= Drawing of shapes and images, management of screen geometry.
+>>>4. [love.graphics](https://love2d.org/wiki/love.graphics) = Drawing of shapes and images, management of screen geometry.
 >>>> #### LÖVE's 2D Cordinate System
->>>> <img src="https://love2d.org/w/images/f/f5/lovecoordsystem.png" style="background-color:RGB(11,224,113);width: 300px; border: 3px solid magenta; border-radius: 5px;">
+>>>>> <img src="https://love2d.org/w/images/f/f5/lovecoordsystem.png" style="background-color:RGB(11,224,113);width: 300px; border: 3px solid magenta; border-radius: 5px;">
 >>
 >>### [How to Run Lua Game in Love2D](https://love2d.org/wiki/Getting_Started#:~:text=easiest%20way%20to%20run%20the%20game%20is%20to%20drag%20the%20folder%20onto%20either%20love.exe%20or%20a%20shortcut%20to%20love.exe.%20Remember%20to%20drag%20the%20folder%20containing%20main.lua%2C%20and%20not%20main.lua%20itself.)
 >>>- [love.run](https://love2d.org/wiki/love.run)
