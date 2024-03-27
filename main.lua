@@ -1,8 +1,8 @@
 -- ![Imports!]
-push = require 'push'
-gui = require 'gui'
-init = require 'init'
-virtual_init = require 'virtual_init'
+Push = require 'push'
+Gui = require 'Pong_lua24.Framework.gui'
+Init = require 'Pong_lua24.Framework.init'
+Virtual_init = require 'Pong_lua24.Framework.virtual_init'
 --  Draw the Screen
 -- > {drawScreen= /GUI_ENV_SCREEN.love}
 -- 2D Screen
