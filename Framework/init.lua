@@ -6,7 +6,7 @@ VIRTUAL_WIDTH = 432 --[[Draws the virtual width to scale]]
 VIRTUAL_HEIGHT = 243 --[[Draws the virtual height to scale]]
 
 -- ?> TODO: Init Game
-function Init(start, filter, setup, display)
+function Init(start, filter, setup, display, fps, title)
     start = love.load() -- Loads Love;
     filter = love.graphics.setDefaultFilter('nearest', 'nearest');
     setup = push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
@@ -19,5 +19,8 @@ function Init(start, filter, setup, display)
         fullscreen = false,
         resizeable = false,
         vsync = true, --syncing frames
-    })
+    });
+    -- sets fps
+    fps = love.timer.getFPS();
+    title = love.window.setTitle(Title);
 end
