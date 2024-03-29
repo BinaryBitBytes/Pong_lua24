@@ -1,9 +1,9 @@
 -- ![Imports!]
 -- Init = require 'Pong_lua24.Framework.init'
-Gui = require('MyPong.Pong_lua24.Framework.gui')
-Init = require('Pong_lua24.Framework.init')
+Gui = require("./Framework/gui.lua")
+Init = require("./Framework/init.lua")
 -- Virtual_init = require 'Pong_lua24.Framework.virtual_init'
-Push = require 'push'
+Push = require("./Methods/push.lua")
 --  Draw the Screen
 -- > {drawScreen= /GUI_ENV_SCREEN.love}
 -- 2D Screen
