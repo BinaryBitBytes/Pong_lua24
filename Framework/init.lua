@@ -21,6 +21,11 @@ function Init(start, filter, setup, display, fps, title)
         vsync = true, --syncing frames
     });
     -- sets fps
-    fps = love.timer.getFPS();
-    title = love.window.setTitle(Title);
+    fps = love.timer.getFPS() {
+
+    };
+    -- sets title in the window
+    title = love.window.setTitle(Title) {
+
+    };
 end
