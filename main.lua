@@ -1,9 +1,10 @@
 -- ![Imports!]
 -- Init = require 'Pong_lua24.Framework.init'
-Gui = require('Pong_lua24.Framework.gui')
-Init = require('Pong_lua24.Framework.init')
+Gui = package.searchpath(name: gui, path:"./Framework/gui.lua") -> 
+-- Gui = require("./Framework/gui.lua")
+Init = require("./Framework/init.lua")
 -- Virtual_init = require 'Pong_lua24.Framework.virtual_init'
-Push = require 'push'
+Push = require("./Methods/push.lua")
 --  Draw the Screen
 -- > {drawScreen= /GUI_ENV_SCREEN.love}
 -- 2D Screen
@@ -22,7 +23,7 @@ Push = require 'push'
 --TODO -- Collision Detection
 -- -- -- Physics
 -- -- -- -- Time Constants
--- -- -- -- Distance / Time 
+-- -- -- -- Distance / Time
 --TODO-- -- -- Events
 --TODO-- -- -- State
 --TODO-- -- -- Sound Effects
