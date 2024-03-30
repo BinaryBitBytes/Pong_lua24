@@ -1,6 +1,6 @@
 -- ![Imports!]
 -- Init = require 'Pong_lua24.Framework.init'
-Gui = package.searchpath(name: 'gui', path:"./Framework/gui.lua") -> filename:"Imports/Gui"
+Gui = package.searchpath(name: gui, path:"./Framework/gui.lua") -> 
 -- Gui = require("./Framework/gui.lua")
 Init = require("./Framework/init.lua")
 -- Virtual_init = require 'Pong_lua24.Framework.virtual_init'
