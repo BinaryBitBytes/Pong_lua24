@@ -94,4 +94,10 @@ function push:getCanvasTable(name)
         end
     end
 end
-
+function push:setShader(name, shader)
+    if not shader then
+    self:getCannvasTable("_render").shader = name
+else
+    self:getCanvasTable(name).shader = shader
+end
+end
