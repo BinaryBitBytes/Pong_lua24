@@ -127,5 +127,5 @@ end
 function push:apply(operation, shader)
     self._drawFunctions[operation](self, shader)
 end
-// Draw the starting canvas
+-- Draw the starting canvas
 function push:start()
