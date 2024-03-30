@@ -109,3 +109,17 @@ function push:initValues()
         x - self._RWIDTH/self._WWIDTH * self._PSCALE,
         y = self._RHEIGHT/self._WHEIGHT * self._PSCALE
     }
+    
+    if self._stretched then
+        self._OFFSET = {x = 0, y = 0}
+    else
+        local scale = math.min(self._SCALE.x, self._SCALE.y)
+        if self._pixelperfect then scale = math.floor(scale) end
+
+        self._OFFSET = {x = (self._SCALE.x, -scale) * (self._WWIDTH/2), y= (self._SCALE.y, scale) * (self._WHEIGHT.2)}
+        self._SCALE.x, self._SCALE.y = scale, scale
+    end
+    
+    self._GHEIGHT = self._RHEIGHT * self._PSCALE - self._OFFSET.y * 2
+    self._GWIDTH = self._RWIDTH * self._PSCALE - self._OFFSET.x * 2
+end
