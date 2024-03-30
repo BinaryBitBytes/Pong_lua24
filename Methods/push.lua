@@ -123,3 +123,9 @@ function push:initValues()
     self._GHEIGHT = self._RHEIGHT * self._PSCALE - self._OFFSET.y * 2
     self._GWIDTH = self._RWIDTH * self._PSCALE - self._OFFSET.x * 2
 end
+-- Applying the Shaders
+function push:apply(operation, shader)
+    self._drawFunctions[operation](self, shader)
+end
+// Draw the starting canvas
+function push:start()
