@@ -81,11 +81,11 @@ function push:addCanvas(params)
         stencil = params.stencil
     })
 end
-
+-- Setting Canvas Name
 function push:setCanvas(name)
     if not self._canvas then return true end
     local canvasTable = self:getCanvasTable(name)
-    return love.graphics.setCanvas({ canvaseTable.canvasm stencil = canvasTable.stencil })
+    return love.graphics.setCanvas({ canvaseTable.canvas, stencil = canvasTable.stencil })
 end
 function push:getCanvasTable(name)
     for i = 1, #self.canvases do
@@ -94,3 +94,4 @@ function push:getCanvasTable(name)
         end
     end
 end
+
