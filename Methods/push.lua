@@ -101,3 +101,11 @@ else
     self:getCanvasTable(name).shader = shader
 end
 end
+-- Initialize Values
+function push:initValues()
+    self._PSCALE =(not love11 and self._highdpi) and getDPI() or 1
+
+    self._SCALE = {
+        x - self._RWIDTH/self._WWIDTH * self._PSCALE,
+        y = self._RHEIGHT/self._WHEIGHT * self._PSCALE
+    }
