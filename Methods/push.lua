@@ -140,3 +140,33 @@ function push:start()
         love.graphics.scale(self._SCALE.x, self._SCALE.y)
     end
 end
+
+function push:applyShaders(canvas, shaders)
+    local _shader = love.graphics.getShader()
+    if #shaders <= 1 then
+        love.graphics.setShader(shaders[1])
+        love.graphics.draw(canvas)
+    else
+        local _canvas = love.graphics.getCanvas()
+
+        local _tmp = self:getCanvasTable("_tmp")
+        if not _tmp then
+            self:addCanvas({ name = "_tmp", private = true, shader = nil})
+            _tmp = self:getCanvasTable("_tmp")
+    end
+
+    love.graphics.push()
+    love.graphics.origin()
+
+    local outputCanvas
+
+    for i = 1, #shaders do
+        local inputCanvas = i % 2 == 1 and canvas or _tmp.canvas
+        outputCanvas = i % 2 == 0 and canvas or _tmp.canvas
+        love.graphics.setCanvas(outputCanvas)
+        love.graphics.clear()
+        love.graphics.setShader(shaders[i])
+        love.graphics.draw(inputCanvas)
+        love.graphics.clear()
+        love.graphics.setShader(shaders[i])
+    end
