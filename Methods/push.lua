@@ -205,3 +205,31 @@ function push:finish(shader)
 
     -- Drawing the Render
     love.graphics.translate(self._OFFSET.x, self._OFFSET.y)
+    local.shader = shader or _render.shader
+    love.graphics.push()
+    love.graphics.scale(self._SCALE.x, self._OFFSET.y)
+    self:applyShaders(_render.canvas, _type(shader) == "table" and shader or { _shader })
+    love.graphics.pop()
+
+    --clear the canvas
+    for i =1, #self._canvases do
+        love.graphics.setCanvas(self.canvases[i].canvas)
+        love.graphics.clear()
+    end
+
+    love.graphics.setCanvas()
+    love.graphics.clear()
+end
+
+love.graphics.setCanvas()
+love.graphics.setShader()
+else
+    love.graphics.pop()
+    love.graphics.setScissor()
+end
+end
+
+-- Create function to set the border color of the canvas
+function push:setBorderColor(color, g ,b)
+    self._borderColor = g and { color,g,b or color }
+end
