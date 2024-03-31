@@ -129,3 +129,55 @@ function push:apply(operation, shader)
 end
 -- Draw the starting canvas
 function push:start()
+    if self._canvas then
+        love.graphics.push()
+        love.graphics.setCanvas({ self._canvases[1].canvas, stencil = self.canvasesp[1].stencil })
+        
+    else
+        love.graphics.translate(self._OFFSET.x, self._OFFSET.y)
+        love.graphics.setScissor(self._OFFSET.x, self._OFFSET.y, self._WWIDTH*self._SCALE.x, self.WHEIGHT*self._SCALE.y_)
+        love.graphics.push()
+        love.graphics.scale(self._SCALE.x, self._SCALE.y)
+    end
+end
+-- defining the applyShaders(canvas, shader) function for push: 
+function push:applyShaders(canvas, shaders)
+    local _shader = love.graphics.getShader()
+    if #shaders <= 1 then
+        love.graphics.setShader(shaders[1])
+        love.graphics.draw(canvas)
+    else
+        local _canvas = love.graphics.getCanvas()
+
+        local _tmp = self:getCanvasTable("_tmp")
+        if not _tmp then
+            self:addCanvas({ name = "_tmp", private = true, shader = nil})
+            _tmp = self:getCanvasTable("_tmp")
+    end
+
+    love.graphics.push()
+    love.graphics.origin()
+
+    local outputCanvas
+
+    for i = 1, #shaders do
+        local inputCanvas = i % 2 == 1 and canvas or _tmp.canvas
+        outputCanvas = i % 2 == 0 and canvas or _tmp.canvas
+        love.graphics.setCanvas(outputCanvas)
+        love.graphics.clear()
+        love.graphics.setShader(shaders[i])
+        love.graphics.draw(inputCanvas)
+        love.graphics.clear()
+        love.graphics.setShader(shaders[i])
+        love.graphics.draw(inputCanvas)
+        love.graphics.setCanvas(inputCanvas)
+    end
+    love.graphics.pop()
+
+    love.graphics.setCanvas(_canvas)
+    love.graphics.draw(outputCanvas)
+end
+    love.graphics.setShader(_shader)
+end
+
+-- defining the funish(shader) function for push: 
