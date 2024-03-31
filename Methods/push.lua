@@ -129,3 +129,14 @@ function push:apply(operation, shader)
 end
 -- Draw the starting canvas
 function push:start()
+    if self._canvas then
+        love.graphics.push()
+        love.graphics.setCanvas({ self._canvases[1].canvas, stencil = self.canvasesp[1].stencil })
+        
+    else
+        love.graphics.translate(self._OFFSET.x, self._OFFSET.y)
+        love.graphics.setScissor(self._OFFSET.x, self._OFFSET.y, self._WWIDTH*self._SCALE.x, self.WHEIGHT*self._SCALE.y_)
+        love.graphics.push()
+        love.graphics.scale(self._SCALE.x, self._SCALE.y)
+    end
+end
