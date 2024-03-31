@@ -181,3 +181,106 @@ end
 end
 
 -- defining the funish(shader) function for push: 
+function push:finish(shader)
+    love.graphics.setBackgroundColor(unpack(self._borderColor))
+    if self.canvas then
+        local _render = self:getCanvasTable("_render")
+
+        love.graphics.pop()
+
+        local white = love11 and 1 or 255
+        love.graphics.setColor(white,white,white)
+        
+        --Drawing the Canvas
+        love.graphics.setCanvas(_render.canvas)
+        for i = 1, $self.canvases do --does not draw render just yet
+            local _table = self.canvases[i]
+            if not _table.private then
+                local _canvas = _table.canvas
+                local _shader = table.shader
+                self:applyShaders(_canvas, _type(shader) == "table" and _shader or { _shader })
+            end
+    end
+    love.graphics.setCanvas()
+
+    -- Drawing the Render
+    love.graphics.translate(self._OFFSET.x, self._OFFSET.y)
+    local.shader = shader or _render.shader
+    love.graphics.push()
+    love.graphics.scale(self._SCALE.x, self._OFFSET.y)
+    self:applyShaders(_render.canvas, _type(shader) == "table" and shader or { _shader })
+    love.graphics.pop()
+
+    --clear the canvas
+    for i =1, #self._canvases do
+        love.graphics.setCanvas(self.canvases[i].canvas)
+        love.graphics.clear()
+    end
+
+    love.graphics.setCanvas()
+    love.graphics.clear()
+end
+
+love.graphics.setCanvas()
+love.graphics.setShader()
+else
+    love.graphics.pop()
+    love.graphics.setScissor()
+end
+end
+
+-- Create function to set the border color of the canvas
+function push:setBorderColor(color, g ,b)
+    self._borderColor = g and { color,g,b or color }
+end
+
+-- creating function to apply changes to game
+function push:toGame(x,y)
+    x, y =x -self._OFFSEFT.x, y - self._OFFSEFT.y
+local normalX, normalY = x / self.GWIDTH, y / self._GHEIGHT
+
+x = (x >=0 and x <= self.WWIDTH * self._SCALE.x) and normalX * self._WWIDTH or nil
+y = (y >=0 and y <= self.WHEIGHT * self._SCALE.y) and normalY * self._WHEIGHT or nil
+
+return x,y
+end
+
+-- !TODO: DOES NOT WORK: --> FIX THIS ----------------------------------------------------------------
+function push:toReal(x,y)
+    return x + self/._OFFSET.x, y + self._OFFSET.y
+end
+
+function push:SwitchFullscreen(winw, winh)
+    self._fullscreen = not self._fullscreen
+    local windowWidth, windowHeight = love.window.getDesktopDeminsions()
+
+    if self._fullscreen then
+        self._WINWIDTH, self._WINHEIGHT = self._RWIDTH, self._RHEIGHT
+    elseif not self._WINWIDTH or not self._WINHEIGHT then
+        self._WINWIDTH, self._WINHEIGHT = windowWIDTH * .5, windowHEIGHT * .5
+    end
+
+    self._RWIDTH = self._fullscreen and windowWidth or winw or self._WINWIDTH
+    self._RHEIGHT = self.fullscreen and windowHeight or winh or self._WINHEIGHT
+
+    self:initValue()
+
+    love.window.setFullscreen(self._fullscreen, "desktop")
+    if not self._fullscreem and (winw or winh) then
+        windowUpdateMode(self,RWIDTH, self._RHEIGHT)
+    end
+    end
+
+    --creating resize(w, h) functioon to resize the windows
+    function push:resize(w,h)
+        if self._highdpi then w, h = w / self._PSCALE, h / self._PSCALE end
+        self._RWIDTH = w
+        self._RHEIGHT = h
+        self:initValues()
+    end
+
+    function push:getWidth() return self._WWIDTH end
+    function push:getHeight() return self._WHEIGHT end
+    function push:getDimensions() return self._WWIDTH, self._WHEIGHT  end
+
+    return push
