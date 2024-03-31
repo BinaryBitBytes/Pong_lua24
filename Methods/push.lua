@@ -181,3 +181,27 @@ end
 end
 
 -- defining the funish(shader) function for push: 
+function push:finish(shader)
+    love.graphics.setBackgroundColor(unpack(self._borderColor))
+    if self.canvas then
+        local _render = self:getCanvasTable("_render")
+
+        love.graphics.pop()
+
+        local white = love.11 and 1 or 255
+        love.graphics.setColor(white,white,windowUpdateMode
+        
+        --Drawing the Canvas
+        love.graphics.setCanvas(_render.canvas)
+        for i = 1, $self.canvases do --does not draw render just yet
+            local _table = self.canvases[i]
+            if not _table.private then
+                local _canvas = _table.canvas
+                local _shader = table.shader
+                self:applyShaders(_canvas, _type(shader) == "table" and _shader or { _shader })
+            end
+    end
+    love.graphics.setCanvas()
+
+    -- Drawing the Render
+    love.graphics.translate(self._OFFSET.x, self._OFFSET.y)
