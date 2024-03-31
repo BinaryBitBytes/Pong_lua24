@@ -260,4 +260,27 @@ function push:SwitchFullscreen(winw, winh)
         self._WINWIDTH, self._WINHEIGHT = windowWIDTH * .5, windowHEIGHT * .5
     end
 
-    
+    self._RWIDTH = self._fullscreen and windowWidth or winw or self._WINWIDTH
+    self._RHEIGHT = self.fullscreen and windowHeight or winh or self._WINHEIGHT
+
+    self:initValue()
+
+    love.window.setFullscreen(self._fullscreen, "desktop")
+    if not self._fullscreem and (winw or winh) then
+        windowUpdateMode(self,RWIDTH, self._RHEIGHT)
+    end
+    end
+
+    --creating resize(w, h) functioon to resize the windows
+    function push:resize(w,h)
+        if self._highdpi then w, h = w / self._PSCALE, h / self._PSCALE end
+        self._RWIDTH = w
+        self._RHEIGHT = h
+        self:initValues()
+    end
+
+    function push:getWidth() return self._WWIDTH end
+    function push:getHeight() return self._WHEIGHT end
+    function push:getDimensions() return self._WWIDTH, self._WHEIGHT  end
+
+    return push
