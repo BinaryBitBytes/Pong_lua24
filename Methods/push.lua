@@ -140,7 +140,7 @@ function push:start()
         love.graphics.scale(self._SCALE.x, self._SCALE.y)
     end
 end
-
+-- defining the applyShaders(canvas, shader) function for push: 
 function push:applyShaders(canvas, shaders)
     local _shader = love.graphics.getShader()
     if #shaders <= 1 then
@@ -169,4 +169,15 @@ function push:applyShaders(canvas, shaders)
         love.graphics.draw(inputCanvas)
         love.graphics.clear()
         love.graphics.setShader(shaders[i])
+        love.graphics.draw(inputCanvas)
+        love.graphics.setCanvas(inputCanvas)
     end
+    love.graphics.pop()
+
+    love.graphics.setCanvas(_canvas)
+    love.graphics.draw(outputCanvas)
+end
+    love.graphics.setShader(_shader)
+end
+
+-- defining the funish(shader) function for push: 
