@@ -233,3 +233,31 @@ end
 function push:setBorderColor(color, g ,b)
     self._borderColor = g and { color,g,b or color }
 end
+
+-- creating function to apply changes to game
+function push:toGame(x,y)
+    x, y =x -self._OFFSEFT.x, y - self._OFFSEFT.y
+local normalX, normalY = x / self.GWIDTH, y / self._GHEIGHT
+
+x = (x >=0 and x <= self.WWIDTH * self._SCALE.x) and normalX * self._WWIDTH or nil
+y = (y >=0 and y <= self.WHEIGHT * self._SCALE.y) and normalY * self._WHEIGHT or nil
+
+return x,y
+end
+
+-- !TODO: DOES NOT WORK: --> FIX THIS ----------------------------------------------------------------
+function push:toReal(x,y)
+    return x + self/._OFFSET.x, y + self._OFFSET.y
+end
+
+function push:SwitchFullscreen(winw, winh)
+    self._fullscreen = not self._fullscreen
+    local windowWidth, windowHeight = love.window.getDesktopDeminsions()
+
+    if self._fullscreen then
+        self._WINWIDTH, self._WINHEIGHT = self._RWIDTH, self._RHEIGHT
+    elseif not self._WINWIDTH or not self._WINHEIGHT then
+        self._WINWIDTH, self._WINHEIGHT = windowWIDTH * .5, windowHEIGHT * .5
+    end
+
+    
